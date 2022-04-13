@@ -94,11 +94,28 @@ Route::group(['middleware' => ['auth', 'role:admin']], function() {
     //Afficher un ou tous les materiels
     Route::get('/admin/Materiels','App\Http\Controllers\MaterielsController@adminShowMateriels')->name('adminShowMateriels');
     Route::get('/admin/Materiel/{id}','App\Http\Controllers\MaterielsController@adminShowMateriel')->name('adminShowMateriel');
-    //Ajouter un ou des produits
+    //Ajouter un ou des materiels 
     Route::get('/admin/adminAddMateriel','App\Http\Controllers\MaterielsController@adminAddMateriel')->name('adminAddMateriel');
     Route::Post('/admin/adminAddMaterielPost','App\Http\Controllers\MaterielsController@adminAddMaterielPost')->name('adminAddMaterielPost');
    //Editer 
    Route::get('/admin/adminEditMateriel/{id}','App\Http\Controllers\MaterielsController@adminEditMateriel')->name('adminEditMateriel');
    Route::Post('/admin/adminEditMaterielPost','App\Http\Controllers\MaterielsController@adminEditMaterielPost')->name('adminEditMaterielPost');
+   //Delet 
+   Route::get('/admin/adminDeleteMateriel/{id}','App\Http\Controllers\MaterielsController@adminDeleteMateriel')->name('adminDeleteMateriel');
+   Route::Post('/admin/adminDeleteMaterieltPost','App\Http\Controllers\MaterielsController@adminDeleteMaterielPost')->name('adminDeleteCategoriePost');
+//CRUD Categories
+    //Afficher un ou tous les Categories
+    Route::get('/admin/Categories','App\Http\Controllers\CategorieController@adminShowCategories')->name('adminShowCategories');
+    Route::get('/admin/adminShowMaterielCategorie/{id}','App\Http\Controllers\MaterielsController@adminShowMateriel')->name('adminShowMateriel');
+    //Ajouter un ou des Categories 
+    Route::get('/admin/adminAddCategorie','App\Http\Controllers\CategorieController@adminAddCategorie')->name('adminAddCategorie');
+    Route::Post('/admin/adminAddCategoriePost','App\Http\Controllers\CategorieController@adminAddCategoriePost')->name('adminAddCategoriePost');
+   //Editer 
+   Route::get('/admin/adminEditCategorie/{id}','App\Http\Controllers\CategorieController@adminEditCategorie')->name('adminEditCategorie');
+   Route::Post('/admin/adminEditCategoriePost','App\Http\Controllers\CategorieController@adminEditCategoriePost')->name('adminEditCategoriePost');
+   //Delet 
+   Route::get('/admin/adminDeleteCategorie/{id}','App\Http\Controllers\CategorieController@adminDeleteCategorie')->name('adminDeleteCategorie');
+   Route::Post('/admin/adminDeleteCategorietPost','App\Http\Controllers\CategorieController@adminDeleteCategoriePost')->name('adminDeleteCategoriePost');
 });
+
 

@@ -10,4 +10,9 @@ class Categorie extends Model
     use HasFactory;
 
      public $timestamps = false;
+     
+    public function categorie()
+    {
+        return $this->hasMany('\App\Models/Materiel','categorie_id');
+    }
 }

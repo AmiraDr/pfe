@@ -39,6 +39,7 @@
         <th>id</th>
         <th>id_scat</th>
         <th>nom</th>
+        <th>Catégories</th>
         <th>marque</th>
         <th>etat</th>
         <th>date_achat</th>
@@ -54,6 +55,7 @@
       <td>{{$materiel->id}}</td>
          <td>{{$materiel->id_scat}}</td>
          <td>{{$materiel->nom}}</td>
+         <td><a href="{{route('adminShowMaterielCategorie',$materiel->categorie_id)}}">@if (isset($materiel->categorie)) {{$materiel->categorie->nom}} @endif</a></td>
          <td>{{$materiel->marque}}</td>
         <td>{{$materiel->etat}}</td>
         <td>{{$materiel->date_achat}}</td>
@@ -63,7 +65,7 @@
       <td>
                         <a href="{{route('adminShowMateriel',$materiel->id)}}" class="btn btn-info btn-sm"> Détails <i class="fas fa-add"></i> </a>
                         <a href= "{{route('adminEditMateriel',$materiel->id)}}"class="btn btn-warning btn-sm"> Editer <i class="fas fa-add"></i> </a>
-                        <a href=# class="btn btn-danger btn-sm"> Supprimer <i class="fas fa-add"></i> </a>
+                        <a href="{{route('adminDeleteMateriel',$materiel->id)}}" class="btn btn-danger btn-sm"> Supprimer <i class="fas fa-add"></i> </a>
                       </td>
 </tr>
        @endforeach
@@ -74,6 +76,7 @@
         <th>id</th>
         <th>id_scat</th>
         <th>nom</th>
+        <th>Catégories</th>
         <th>marque</th>
         <th>etat</th>
         <th>date_achat</th>

@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Materiels</h1>
+            <h1 class="m-0">Détail du Materiel</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-              <li class="breadcrumb-item active"><a href="{{route('adminShowProduits')}}">Materiels</a></li>
+              <li class="breadcrumb-item active"><a href="{{route('adminShowMateriels')}}">Materiels</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -21,54 +21,64 @@
     </div>
     <!-- /.content-header -->
 
-    
      <section class="content">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                  <a href="{{route('adminAddMateriel')}}" class="btn btn-success btn-sm"> <i class="fas fa-plus"></i> Ajouter un Materiel </a>
-                  <a href="#" class="BtnFiltrer btn-sm btn btn-primary"> <i class="fas fa-filter"></i> Filtrer</a>
-                  <a href="#" class="BtnExporter btn-sm btn btn-primary"> <i class="fas fa-file-export"></i> Exporter</a>
+                  <a href="{{route('adminShowMateriels')}}" class="btn btn-secondary btn-sm"> Retour <i class="fas fa-add"></i> </a>
+                  <a href="{{route('adminEditMateriel',$materiel->id)}}" class="btn btn-warning btn-sm"> Editer <i class="fas fa-add"></i> </a>
+                  <a href="{{route('adminDeleteMateriel',$materiel->id)}}" class="btn btn-danger btn-sm"> Supprimer <i class="fas fa-add"></i> </a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
+                <table class="table table-bordered table-striped">
+                     
                   <tr>
-                    <th>ID</th>
-                    <th>Nom</th>
-                    <th>Categorie</th>
-                    <th>Prix</th>
-                    <th>Actions</th>
+                    <th>ID </th>
+                    <td>{{$materiel->id}}</td>
                   </tr>
-                  </thead>
-                  <tbody>
-                  @foreach ($produits as $produit)
-                    <tr>
-                      <td>{{$produit->id}}</td>
-                      <td>{{$produit->nom}}</td>
-                      <td>@if (isset($produit->categorie)) {{$produit->categorie->nom}} @endif</td>
-                      <td>{{$produit->prix}}</td>
-                      <td>
-                        <a href="{{route('adminShowProduit',$produit->id)}}" class="btn btn-info btn-sm"> Détails <i class="fas fa-add"></i> </a>
-                        <a href="{{route('adminEditProduit',$produit->id)}}" class="btn btn-warning btn-sm"> Editer <i class="fas fa-add"></i> </a>
-                        <a href="{{route('adminDeleteProduit',$produit->id)}}" class="btn btn-danger btn-sm"> Supprimer <i class="fas fa-add"></i> </a>
-                      </td>
-                    </tr>
-                    @endforeach
-                  
-                  </tbody>
-                  <tfoot>
                   <tr>
-                    <th>ID</th>
-                    <th>Nom</th>
-                    <th>Categorie</th>
-                    <th>Prix</th>
-                    <th>Actions</th>
+                    <th>ID scat</th>
+                    <td>{{$materiel->id_scat}}</td>
                   </tr>
-                  </tfoot>
+
+                  <tr>
+                    <th>Nom</th>
+                    <td>{{$materiel->nom}}</td>
+                  </tr>
+
+                  <tr>
+                    <th>Categorie</th>
+                    <td>@if (isset($materiel->categorie)) {{$materiel->categorie->nom}} @endif</td>
+                  </tr>
+                  <tr>
+                    <th>Marque</th>
+                    <td>{{$materiel->marque}}</td>
+                  </tr>
+                  <tr>
+                    <th>Etat</th>
+                    <td>{{$materiel->etat}</td>
+                  </tr>
+                  <tr>
+                    <th>Date d'achat</th>
+                    <td>{{$materiel->date_achat}}</td>
+                  </tr>
+                  <tr>
+                    <th>Date fin de garantie/th>
+                    <td>{{$materiel->date_fin_garantie}}</td>
+                  </tr>
+                  <tr>
+                    <th>Date de vie estimé</th>
+                    <td>{{$materiel->date_vie_estime}}</td>
+                  </tr>
+
+                  <tr>
+                    <th>Manuel Maintenance</th>
+                    <td>{{$materiel->manuel_maintenance}}</td>
+                  </tr>
+
                 </table>
               </div>
               <!-- /.card-body -->

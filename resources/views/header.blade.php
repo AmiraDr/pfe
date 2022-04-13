@@ -194,6 +194,12 @@
                         <i class="fas fa-info nav-icon"></i><p>Materiels</p>
                       </a>
                     </li>
+                    
+                    <li class="nav-item">
+                      <a href="{{route('adminShowCategories')}}" class="nav-link">
+                        <i class="fas fa-info nav-icon"></i><p>Categories</p>
+                      </a>
+                    </li>
                    
                
               </ul>
@@ -219,7 +225,11 @@
                       </a>
                     </li>
                    
-               
+                    <li class="nav-item">
+                      <a href="{{route('adminShowCategories')}}" class="nav-link">
+                        <i class="fas fa-info nav-icon"></i><p>Catégories</p>
+                      </a>
+                    </li>
               </ul>
             </li>
 

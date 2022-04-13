@@ -39,39 +39,55 @@
               <!-- form start -->
               <form id="quickForm" method="POST" action="{{route('adminEditMaterielPost')}}">
                 @csrf
-                <input type="hidden" name="id" value="{{$Materiels->id}}" />
-                <div class="card-body">
-                  
-                  
-                  <div class="form-group">
-                    <label>Nom</label>
-                    <input type="text" value="{{$Materiels->nom}}" required name="nom" class="form-control" placeholder="Entrer le nom">
-                  </div>
-                  
-                  <div class="form-group">
-                    <label>marque</label>
-                    <input type="text" required name="marque" class="form-control" placeholder="Entrer la marque">
-                  </div>
-                  <div class="form-group">
-                    <label>prix</label>
-                    <input type="float" required name="prix" class="form-control" placeholder="Entrer le prix">
+                <input type="hidden" name="id" value="{{$materiel->id}}" />
+ 
+                <div class="form-group">
+                    <label>Categories</label>
+                    <select name="categorie_id" class="form-control">
+                      @foreach ($categories as $categorie)
+                        <option value="{{$categorie->id}}" @if ($categorie->id==$materiel->categorie_id) selected @endif >
+                          {{$categorie->nom}}
+                        </option>
+                      @endforeach
+                    </select>
                   </div>
 
-                  <div class="form-group">
-                    <label>etat</label>
-                    <input type="text" required name="" class="form-control" placeholder="Entrer l'etat">
+                  
+                <div class="form-group">
+                    <label>id</label>
+                    <input type="text" name="id" class="form-control" placeholder="Entrer id"  value="{{$materiel->id}}" />
                   </div>
                   <div class="form-group">
+                    <label>scat id</label>
+                    <input type="text" required name="scat_id" class="form-control" placeholder="Entrer id" value="{{$materiel->scat_id}}" />
+                  </div>
+                  <div class="form-group">
+                    <label>Nom</label>
+                    <input type="text" required name="nom" class="form-control" placeholder="Entrer le nom" value="{{$materiel->nom}}"/>
+                  </div>
+                  <div class="form-group">
+                    <label>marque</label>
+                    <input type="text" required name="marque" class="form-control" placeholder="Entrer la marque" value="{{$materiel->marque}}" />
+</div>
+                  <div class="form-group">
+                    <label>etat</label>
+                    <input type="text" required name="etat" class="form-control" placeholder="Entrer l'etat" value="{{$materiel->etat}}" />
+                  </div> 
+                  <div class="form-group">
                     <label>Date d'achat</label>
-                    <input type="Date" required name="date d'achat" class="form-control" placeholder="Entrer le date d'achat">
+                    <input type="Date" required name="date_achat" class="form-control" placeholder="Entrer le date d'achat" value="{{$materiel->date_achat}}" />
                   </div>
                   <div class="form-group">
                     <label>Date fin garantie</label>
-                    <input type="Date" required name="date fin garantie" class="form-control" placeholder="Entrer le date">
+                    <input type="Date" required name="date_fin_garantie" class="form-control" placeholder="Entrer le date" value="{{$materiel->date_fin_garantie}}" />
                   </div> 
                   <div class="form-group">
                     <label>Date de vie estimé</label>
-                    <input type="Date" required name="date " class="form-control" placeholder="Entrer le date">
+                    <input type="Date" required name="date_vie_estime" class="form-control" placeholder="Entrer le date" value="{{$materiel->date_vie_estime}}" />
+                  </div>
+                  <div class="form-group">
+                    <label>Manuel maintenance</label>
+                    <input type="text" required name="manuel_maintenance" class="form-control" placeholder="comenter" value="{{$materiel->manuel_maintenance}}" />
                   </div>
 </div>
                 <!-- /.card-body -->

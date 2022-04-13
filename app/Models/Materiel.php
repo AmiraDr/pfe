@@ -9,4 +9,9 @@ class Materiel extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    
+    public function categorie()
+    {
+        return $this->belongsTo(\App\Models\Categorie::class);
+    }
 }

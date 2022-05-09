@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Produits</h1>
+            <h1 class="m-0">Maintenances</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-              <li class="breadcrumb-item active"><a href="{{route('adminShowProduits')}}">Produits</a></li>
+              <li class="breadcrumb-item active"><a href="{{route('adminShowMaintenances')}}">Maintenances</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -28,7 +28,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                  <a href="{{route('adminAddProduit')}}" class="btn btn-success btn-sm"> <i class="fas fa-plus"></i> Ajouter un produit </a>
+                  <a href="{{route('adminAddMaintenance')}}" class="btn btn-success btn-sm"> <i class="fas fa-plus"></i> Ajouter un Maintenance </a>
                   <a href="#" class="BtnFiltrer btn-sm btn btn-primary"> <i class="fas fa-filter"></i> Filtrer</a>
                   <a href="#" class="BtnExporter btn-sm btn btn-primary"> <i class="fas fa-file-export"></i> Exporter</a>
               </div>
@@ -38,29 +38,30 @@
                   <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Nom</th>
-                    <th>Categorie</th>
-                    <th>Prix</th>
-                    <th>Actions</th>
+                    <th>Materiel_id</th>
+                    <th>Agent_id</th>
+                    <th>Maintenance</th>
+                    <th>Facture</th>
+                    <th>Frais de maintenance</th>
+                    <th>Description</th>
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach ($produits as $produit)
+                  @foreach ($maintenances as $maintenance)
                     <tr>
-                      <td>{{$produit->id}}</td>
-                      <td>{{$produit->nom}}</td>
-                      <td>@if (isset($produit->categorie)) {{$produit->categorie->nom}} @endif</td>
-                      <td>{{$produit->prix}}</td>
+                    <td>{{$maintenance->id}}</td>
+                    <td>{{$maintenance->materiel_id}}</td>
+                    <td>{{$maintenance->agent_id}}</td>
+                    <td>{{$maintenance->maintenance}}</td>
+                    <td>{{$maintenance->facture}}</td>
+                    <td>{{$maintenance->description}}</td>>
+                      <td>{{$maintenance->prix}}</td> 
+</tr>
+
                       <td>
-                      <div class="btn-group">
-                      <button type='button' class="btn btn-primary">Actions</button>
-                      <button type='button' class="btn btn-primary dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                        <span class="sr-only"> toggle dropdown</span>
-                       </button>
-                       <div class="dropdown-menu" role="menu">
-                        <a href="{{route('adminShowProduit',$produit->id)}}" class="btn btn-info btn-sm"> Détails <i class="fas fa-add"></i> </a>
-                        <a href="{{route('adminEditProduit',$produit->id)}}" class="btn btn-warning btn-sm"> Editer <i class="fas fa-add"></i> </a>
-                        <a href="{{route('adminDeleteProduit',$produit->id)}}" class="btn btn-danger btn-sm"> Supprimer <i class="fas fa-add"></i> </a>
+                        <a href="{{route('adminShowMaintenance',$maintenance->id)}}" class="btn btn-info btn-sm"> Détails <i class="fas fa-add"></i> </a>
+                        <a href="{{route('adminEditMaintenance',$maintenance->id)}}" class="btn btn-warning btn-sm"> Editer <i class="fas fa-add"></i> </a>
+                        <a href="{{route('adminDeleteMaintenance',$maintenance->id)}}" class="btn btn-danger btn-sm"> Supprimer <i class="fas fa-add"></i> </a>
                       </td>
                     </tr>
                     @endforeach
@@ -68,11 +69,13 @@
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>ID</th>
-                    <th>Nom</th>
-                    <th>Categorie</th>
-                    <th>Prix</th>
-                    <th>Actions</th>
+                  <th>ID</th>
+                    <th>Materiel_id</th>
+                    <th>Agent_id</th>
+                    <th>Maintenance</th>
+                    <th>Facture</th>
+                    <th>Frais de maintenance</th>
+                    <th>Description</th>
                   </tr>
                   </tfoot>
                 </table>

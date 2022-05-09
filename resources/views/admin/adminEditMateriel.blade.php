@@ -89,7 +89,10 @@
                     <label>Manuel maintenance</label>
                     <input type="text" required name="manuel_maintenance" class="form-control" placeholder="comenter" value="{{$materiel->manuel_maintenance}}" />
                   </div>
-</div>
+</div><div class="form-group">
+                    <label>Quantité de stock</label>
+                    <input type="text" required name="quantite_stock" class="form-control" placeholder="Entrer l'etat" value="{{$materiel->quantite_stock}}" />
+                  </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-warning">Mettre à jour</button>

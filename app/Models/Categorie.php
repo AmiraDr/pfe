@@ -11,8 +11,9 @@ class Categorie extends Model
 
      public $timestamps = false;
      
-    public function categorie()
+    public function materiels()
+    
     {
-        return $this->hasMany('\App\Models/Materiel','categorie_id');
+        return $this->hasMany('\App\Models/Materiel', 'categorie_id');
     }
 }

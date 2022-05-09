@@ -91,7 +91,7 @@
                   </div>
                   <div class="form-group">
                     <label>Quantité de stock</label>
-                    <input type="text" name="quantite_stock" class="form-control" placeholder="Entrer quantite_stock">
+                    <input type="text" name="agent" class="form-control" placeholder="Entrer agent">
                   </div>
                 </div>
                 <!-- /.card-body -->

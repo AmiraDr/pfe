@@ -34,6 +34,7 @@
 
       @endphp
 
+     
 
 
 <body class="hold-transition sidebar-mini">
@@ -44,20 +45,18 @@
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
+      
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{route('dashboard')}}" class="nav-link">Dashboard</a>
       </li>
-      
-      
+</li>
     </ul>
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      
-     <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
+    <ul class="navbar-right">
+<li class="nav-item dropdown">
+        <a  class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i> 
           @if ($NbreAlertsTotal<>0)
             <span class="badge badge-warning navbar-badge">{{$NbreAlertsTotal}}</span>
           @endif
@@ -72,14 +71,12 @@
                 <span class="float-right text-muted text-sm">{{\Carbon\Carbon::parseFromLocale($group->first()->date)->diffForHumans()}}</span>
               </a>
           @endforeach
-        
-         
-        </div>
-      </li>
+</li>
+<span class="navbar-item">
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-user"></i>
-        </a>
+        </a> </span>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-item dropdown-header">Mon Profile</span>
           
@@ -93,16 +90,13 @@
               <a class="nav-link"  href="{{ route('logout') }}" onclick="event.preventDefault();  document.getElementById('logout-form').submit();">
                 <i class="fas fa-sign-out-alt mr-2"></i> Déconnexion
               </a>
-         
-         
         </div>
-      </li>
-
-      
+</li>
 
       
 
     </ul>
+
   </nav>
   <!-- /.navbar -->
 
@@ -166,7 +160,7 @@
 
                     <li class="nav-item">
                       <a href="{{route('adminShowUsers')}}" class="nav-link">
-                        <i class="fas fa-users-cog nav-icon"></i>
+                        <i class="fa fa-users nav-icon"></i>
                         <p>Employés</p>
                       </a>
                     </li>
@@ -179,7 +173,7 @@
 
                     <li class="nav-item">
                       <a href="{{route('adminShowNotes')}}" class="nav-link">
-                        <i class="fas fa-info nav-icon"></i><p>Notes</p>
+                        <i class="fa fa-sticky-note nav-icon"></i><p>Notes</p>
                       </a>
                     </li>
 
@@ -191,58 +185,115 @@
 
                     <li class="nav-item">
                       <a href="{{route('adminShowMateriels')}}" class="nav-link">
-                        <i class="fas fa-info nav-icon"></i><p>Materiels</p>
+                        <i class="fa fa-camera-retro"></i><p>Materiels</p>
                       </a>
                     </li>
                     
                     <li class="nav-item">
                       <a href="{{route('adminShowCategories')}}" class="nav-link">
-                        <i class="fas fa-info nav-icon"></i><p>Categories</p>
+                        <i class="fas fa-project-diagram nav-icon"></i><p>Categories</p>
                       </a>
                     </li>
-                   
+                    <li class="nav-item">
+                      <a href="{{route('adminShowMaintenances')}}" class="nav-link">
+                        <i class="fa fa-wrench nav-icon"></i><p>Maintenance</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{route('adminShowReservations')}}" class="nav-link">
+                        <i class="fa fa-shopping-cart nav-icon"></i><p>Réesrvation</p>
+                      </a>
+                    </li>
                
               </ul>
-            </li>
-
-            
+            </li> 
+                        
           @endif 
 
-          @if (Auth::user()->hasRole(['admin']))
+            @if (Auth::user()->hasRole(['user']))
+            
             <li class="nav-item menu-open">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
-                 Gestion
+                  My profile
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
 
+                 
+              <li class="nav-item">
+                      <a href="{{route('userShowMateriels')}}" class="nav-link">
+                        <i class="fas fa-info nav-icon"></i><p>Materiels</p>
+                      </a>
+                    </li>
+                    
+          @endif 
+        </ul>
+</li>
+@if (Auth::user()->hasRole(['Agent']))
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Agent
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+
+                 
+
+                 
+
+                     <li class="nav-item">
+                      <a href="{{route('adminShowSecurites')}}" class="nav-link">
+                        <i class="fas fa-exclamation-triangle  nav-icon"></i>
+                        <p>Sécurite</p>
+                      </a>
+                    </li>
+
                     <li class="nav-item">
-                      <a href="" class="nav-link">
-                        <i class="fa fa-address-book-o nav-icon"></i><p>Materiels</p>
+                      <a href="{{route('adminShowUsers')}}" class="nav-link">
+                        <i class="fa fa-users nav-icon"></i>
+                        <p>Employés</p>
                       </a>
                     </li>
                    
+
                     <li class="nav-item">
-                      <a href="{{route('adminShowCategories')}}" class="nav-link">
-                        <i class="fas fa-info nav-icon"></i><p>Catégories</p>
+                      <a href="{{route('adminShowNotes')}}" class="nav-link">
+                        <i class="fa fa-sticky-note nav-icon"></i><p>Notes</p>
                       </a>
                     </li>
+
+                    <li class="nav-item">
+                      <a href="{{route('adminShowMateriels')}}" class="nav-link">
+                        <i class="fa fa-camera-retro"></i><p>Materiels</p>
+                      </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                      <a href="{{route('adminShowCategories')}}" class="nav-link">
+                        <i class="fas fa-project-diagram nav-icon"></i><p>Categories</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{route('adminShowMaintenances')}}" class="nav-link">
+                        <i class="fa fa-wrench nav-icon"></i><p>Maintenance</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{route('adminShowReservations')}}" class="nav-link">
+                        <i class="fa fa-shopping-cart nav-icon"></i><p>Réesrvation</p>
+                      </a>
+                    </li>
+               
               </ul>
-            </li>
-
-            
+            </li> 
+                        
           @endif 
-
-         
-
-           
-            
-
-         
-        </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>

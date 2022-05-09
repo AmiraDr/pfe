@@ -1,4 +1,5 @@
-@include ('header')
+
+  @include ('header')
 @include ('tableHeader')
 
   <!-- Content Wrapper. Contains page content -->
@@ -8,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Détail du Materiel</h1>
+            <h1 class="m-0">Composant de materiel</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -26,8 +27,46 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-            <div class="btn-group">
-                      <button type="button" class="btn btn-primary">Actions</button>
+              <div class="card-header">
+              <a href="{{route('adminAddMateriel')}}" class="btn btn-success btn-sm"> <i class="fas fa-plus"></i> Ajouter un materiel </a>
+                  
+              </div>
+               
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table class="table table-bordered table-striped">
+       <thead>           
+      <tr>
+        <th>id</th>
+        <th>id_scat</th>
+        <th>nom</th>
+        <th>Catégories</th>
+        <th>marque</th>
+        <th>etat</th>
+        <th>date_achat</th>
+        <th>date_fin_garantie</th>
+        <th>date_vie_estimé</th>
+        <th>manuel_maintenance</th>   
+         <th>Quantité de stock</th>
+</tr>
+</thead>
+<tbody>
+       @foreach ($materiels as $materiel)
+      <tr> 
+      <td>{{$materiel->id}}</td>
+         <td>{{$materiel->id_scat}}</td>
+         <td>{{$materiel->nom}}</td>
+         <td><a href="{{route('adminShowMateriel',$materiel->categorie_id)}}">@if (isset($materiel->categorie)) {{$materiel->categorie->nom}} @endif</a></td>
+         <td>{{$materiel->marque}}</td>
+        <td>{{$materiel->etat}}</td>
+        <td>{{$materiel->date_achat}}</td>
+        <td>{{$materiel->date_fin_garantie }}</td>
+        <td>{{$materiel->date__vie_estimé}}</td>
+        <td>{{$materiel->manuel_maintenance}}</td>  
+        <td>{{$materiel->quantite_stock}}</td>
+      <td>
+                       <div class="btn-group">
+                      <button type="button" class="btn btn-primary">actions</button>
                       <button type="button" class="btn btn-primary dropdown-toggle dropdown-icon" data-toggle="dropdown">
                         <span class="sr-only"> toggle dropdown</span>
                        </button> 
@@ -39,60 +78,28 @@
                         <a href="{{route('adminReserverMateriel',$materiel->id)}}" class="droptown-item"> Réserver <i class="fas fa-add"> </i> </a>
        </div>
        </div>
-          
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table class="table table-bordered table-striped">
-                     
+                      </td>
+</tr>
+       @endforeach
+         
+       </tbody>
+                  <tfoot>
                   <tr>
-                    <th>ID </th>
-                    <td>{{$materiel->id}}</td>
-                  </tr>
-                  <tr>
-                    <th>ID scat</th>
-                    <td>{{$materiel->id_scat}}</td>
-                  </tr>3
-
-                  <tr>
-                    <th>Nom</th>
-                    <td>{{$materiel->nom}}</td>
-                  </tr>
-
-                  <tr>
-                    <th>Categorie</th>
-                    <td>@if (isset($materiel->categorie)) {{$materiel->categorie->nom}} @endif</td>
-                  </tr>
-                  <tr>
-                    <th>Marque</th>
-                    <td>{{$materiel->marque}}</td>
-                  </tr>
-                  <tr>
-                    <th>Etat</th>
-                    <td>{{$materiel->etat}}</td>
-                  </tr>
-                  <tr>
-                    <th>Date d'achat</th>
-                    <td>{{$materiel->date_achat}}</td>
-                  </tr>
-                  <tr>
-                    <th>Date fin de garantie/th>
-                    <td>{{$materiel->date_fin_garantie}}</td>
-                  </tr>
-                  <tr>
-                    <th>Date de vie estimé</th>
-                    <td>{{$materiel->date_vie_estime}}</td>
-                  </tr>
-
-                  <tr>
-                    <th>Manuel Maintenance</th>
-                    <td>{{$materiel->manuel_maintenance}}</td>
-                  </tr>
-                  <tr>
-                    <th>Quantité de stock</th>
-                    <td>{{$materiel->quantite_stock}}</td>
-                  </tr> 
-                </table>
-              </div>
+        <th>id</th>
+        <th>id_scat</th>
+        <th>nom</th>
+        <th>Catégories</th>
+        <th>marque</th>
+        <th>etat</th>
+        <th>date_achat</th>
+        <th>date_fin_garantie</th>
+        <th>date_vie_estimé</th>
+        <th>manuel_maintenance</th>   
+        <th>Quantité de stock</th>
+        </tr>
+                  </tfoot>
+</table>
+</div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->

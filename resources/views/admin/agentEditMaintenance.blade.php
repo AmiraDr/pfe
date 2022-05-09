@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Ajouter un materiel</h1>
+            <h1 class="m-0">Mettre à jour un Maintenance</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-              <li class="breadcrumb-item active"><a href="{{route('adminShowMateriels')}}">Materiels</a></li>
+              <li class="breadcrumb-item active"><a href="{{route('agentShowMaintenances')}}">Maintenances</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -31,75 +31,67 @@
           </div>
           <div class="col-md-8">
             <!-- jquery validation -->
-            <div class="card card-success">
+            <div class="card card-warning">
               <div class="card-header">
-                <h3 class="card-title">Ajouter un Materiel</h3>
+                <h3 class="card-title">Mettre à jour un Maintenance</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="quickForm" method="POST" action="{{route('adminAddMaterielPost')}}">
+              <form id="quickForm" method="POST" action="{{route('agentEditMaintenancePost')}}">
                 @csrf
+                <input type="hidden" name="id" value="{{$maintenance->id}}" />
                 <div class="card-body">
+                  
                   
                   <div class="form-group">
                     <label>Categories</label>
                     <select name="categorie_id" class="form-control">
                       @foreach ($categories as $categorie)
-                        <option value="{{$categorie->id}}">
+                        <option value="{{$categorie->id}}" @if ($categorie->id==$maintenance->categorie_id) selected @endif >
                           {{$categorie->nom}}
                         </option>
                       @endforeach
                     </select>
                   </div>
 
+
+                  <div class="form-group">
+                    <label>Materiel_id</label>
+                    <input type="text" value="{{$maintenance->materiel_id}}" required name="materiel_id" class="form-control" placeholder="Entrer le nom">
+                  </div>
                   
                   <div class="form-group">
-                    <label>id</label>
-                    <input type="text" name="id" class="form-control" placeholder="Entrer id">
+                    <label>Agent_id</label>
+                    <input type="text" value="{{$maintenance->Agent_id}}" required name="Agent_id" class="form-control" placeholder="Entrer le Agent_id">
                   </div>
+                  
                   <div class="form-group">
-                    <label>scat id</label>
-                    <input type="text" required name="scat_id" class="form-control" placeholder="Entrer id">
+                    <label>Maintenance</label>
+                    <input type="text" value="{{$maintenance->Maintenance}}" required name="Maintenance" class="form-control" placeholder="Entrer le Maintenance">
                   </div>
+
                   <div class="form-group">
-                    <label>Nom</label>
-                    <input type="text" required name="nom" class="form-control" placeholder="Entrer le nom">
+                    <label>Facture</label>
+                    <input type="text" value="{{$maintenance->facture}}" required name="facture" class="form-control" placeholder="Entrer le facture">
                   </div>
+
+                  
                   <div class="form-group">
-                    <label>marque</label>
-                    <input type="text" required name="marque" class="form-control" placeholder="Entrer la marque">
-</div>
-                  <div class="form-group">
-                    <label>etat</label>
-                    <input type="text" required name="etat" class="form-control" placeholder="Entrer l'etat">
-                  </div> 
-                  <div class="form-group">
-                    <label>Date d'achat</label>
-                    <input type="Date" required name="date_achat" class="form-control" placeholder="Entrer le date d'achat">
+                    <label>Description</label>
+                    <input type="text" value="{{$maintenance->description}}" required name="description" class="form-control" placeholder="Entrer la description">
                   </div>
+                  
                   <div class="form-group">
-                    <label>Date fin garantie</label>
-                    <input type="Date" required name="date_fin_garantie" class="form-control" placeholder="Entrer le date">
-                  </div> 
-                  <div class="form-group">
-                    <label>Date de vie estimé</label>
-                    <input type="Date" required name="date_vie_estime" class="form-control" placeholder="Entrer le date">
+                    <label>Frais de maintenance</label>
+                    <input type="text" value="{{$maintenance->prix}}" required name="prix" class="form-control" placeholder="Entrer le prix">
                   </div>
-                  <div class="form-group">
-                    <label>Manuel maintenance</label>
-                    <input type="text" required name="manuel_maintenance" class="form-control" placeholder="comenter">
-                  </div>
-                  <div class="form-group">
-                    <label>Quantité de stock</label>
-                    <input type="text" name="quantite_stock" class="form-control" placeholder="Entrer quantite_stock">
-                  </div>
+
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-success" >Ajouter un materiel</button>
-                  <a href="{{route('adminShowMateriels')}}" class="btn btn-secondary">Annuler</a>
+                  <button type="submit" class="btn btn-warning">Mettre à jour</button>
+                  <a href="{{route('agentShowMaintenances')}}" class="btn btn-secondary">Annuler</a>
                 </div>
-                
               </form>
             </div>
             <!-- /.card -->

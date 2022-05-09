@@ -13,7 +13,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-              <li class="breadcrumb-item active"><a href="{{route('adminShowMateriels')}}">Materiels</a></li>
+              <li class="breadcrumb-item active"><a href="{{route('userShowMateriels')}}">Materiels</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -26,20 +26,11 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-            <div class="btn-group">
-                      <button type="button" class="btn btn-primary">Actions</button>
-                      <button type="button" class="btn btn-primary dropdown-toggle dropdown-icon" data-toggle="dropdown">
-                        <span class="sr-only"> toggle dropdown</span>
-                       </button> 
-                       <div class:="dropdown-menu" role="menu">
-                        <a href="{{route('adminShowMateriel',$materiel->id)}}" class="droptown-item" > Détails <i class="fas fa-add"></i> </a>
-                        <a href="{{route('adminShowMateriels_composant',$materiel->id)}}" class="droptown-item"> composant <i class="fas fa-add"></i> </a>
-                        <a href= "{{route('adminEditMateriel',$materiel->id)}}"class="droptown-item"> Editer <i class="fas fa-add"></i> </a>
-                        <a href="{{route('adminDeleteMateriel',$materiel->id)}}" class="droptown-item"> Supprimer <i class="fas fa-add"></i> </a>
-                        <a href="{{route('adminReserverMateriel',$materiel->id)}}" class="droptown-item"> Réserver <i class="fas fa-add"> </i> </a>
-       </div>
-       </div>
-          
+              <div class="card-header">
+                  <a href="{{route('userShowMateriels')}}" class="btn btn-secondary btn-sm"> Retour <i class="fas fa-add"></i> </a>
+                  <a href="{{route('userEditMateriel',$materiel->id)}}" class="btn btn-warning btn-sm"> Editer <i class="fas fa-add"></i> </a>
+                  <a href="{{route('userDeleteMateriel',$materiel->id)}}" class="btn btn-danger btn-sm"> Supprimer <i class="fas fa-add"></i> </a>
+              </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table class="table table-bordered table-striped">
@@ -51,7 +42,7 @@
                   <tr>
                     <th>ID scat</th>
                     <td>{{$materiel->id_scat}}</td>
-                  </tr>3
+                  </tr>
 
                   <tr>
                     <th>Nom</th>
@@ -68,7 +59,7 @@
                   </tr>
                   <tr>
                     <th>Etat</th>
-                    <td>{{$materiel->etat}}</td>
+                    <td>{{$materiel->etat}</td>
                   </tr>
                   <tr>
                     <th>Date d'achat</th>
